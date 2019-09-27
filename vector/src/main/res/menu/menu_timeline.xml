@@ -26,4 +26,11 @@
         app:showAsAction="never"
         tools:visible="true" />
 
+    <item
+        android:id="@+id/menu_room_directory_leave_room"
+        android:icon="@drawable/vector_leave_room_black"
+        android:title="@string/leave"
+        android:visible="true"
+        tools:visible="true" />
+
 </menu>

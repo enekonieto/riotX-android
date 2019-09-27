@@ -242,8 +242,9 @@ class RoomDetailViewModel @AssistedInject constructor(@Assisted initialState: Ro
         R.id.clear_message_queue ->
             /* For now always disable on production, worker cancellation is not working properly */
             timeline.pendingEventCount() > 0 && BuildConfig.DEBUG
-        R.id.resend_all          -> timeline.failedToDeliverEventCount() > 0
-        R.id.clear_all           -> timeline.failedToDeliverEventCount() > 0
+        R.id.resend_all             -> timeline.failedToDeliverEventCount() > 0
+        R.id.clear_all              -> timeline.failedToDeliverEventCount() > 0
+        R.id.ic_action_room_leave   -> true
         else                     -> false
     }
 

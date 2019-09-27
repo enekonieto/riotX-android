@@ -298,17 +298,24 @@ class RoomDetailFragment :
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.clear_message_queue) {
-            //This a temporary option during dev as it is not super stable
-            //Cancel all pending actions in room queue and post a dummy
-            //Then mark all sending events as undelivered
-            roomDetailViewModel.process(RoomDetailActions.ClearSendQueue)
-            return true
+        when (item.itemId) {
+            R.id.clear_message_queue -> {
+                //This a temporary option during dev as it is not super stable
+                //Cancel all pending actions in room queue and post a dummy
+                //Then mark all sending events as undelivered
+                roomDetailViewModel.process(RoomDetailActions.ClearSendQueue)
+                return true
+            }
+            R.id.resend_all -> {
+                roomDetailViewModel.process(RoomDetailActions.ResendAll)
+                return true
+            }
+            R.id.ic_action_room_leave     -> {
+                Timber.d("ROOM LEAVE")
+                return true
+            }
         }
-        if (item.itemId == R.id.resend_all) {
-            roomDetailViewModel.process(RoomDetailActions.ResendAll)
-            return true
-        }
+
         return super.onOptionsItemSelected(item)
     }
 
